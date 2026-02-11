@@ -67,7 +67,7 @@ snappy-project/
 
 ---
 
-## 1️ Create New Laravel 12 Project
+## 1️. Create New Laravel 12 Project
 
 ```bash
 composer create-project laravel/laravel snappy-project
@@ -87,7 +87,7 @@ http://127.0.0.1:8000
 
 ---
 
-## 2️ Database Configuration
+## 2️. Database Configuration
 
 Update `.env` file:
 
@@ -102,7 +102,7 @@ DB_PASSWORD=
 
 ---
 
-## 3️ Install Laravel Snappy
+## 3️. Install Laravel Snappy
 
 ```bash
 composer require barryvdh/laravel-snappy
@@ -112,7 +112,7 @@ Laravel 12 supports auto-discovery. No manual provider registration required.
 
 ---
 
-## 4️ Install wkhtmltopdf (Required)
+## 4️. Install wkhtmltopdf (Required)
 
 Download from:
 
@@ -141,7 +141,7 @@ Optional test:
 
 ---
 
-## 5️ Publish Configuration
+## 5️. Publish Configuration
 
 ```bash
 php artisan vendor:publish --provider="Barryvdh\Snappy\ServiceProvider"
@@ -155,7 +155,7 @@ config/snappy.php
 
 ---
 
-## 6️ Configure Binary Path
+## 6️. Configure Binary Path
 
 Open `config/snappy.php` and update:
 
@@ -180,7 +180,7 @@ php artisan cache:clear
 
 ---
 
-## 7️ Create Controller
+## 7️. Create Controller
 
 ```bash
 php artisan make:controller PdfController
@@ -216,7 +216,7 @@ class PdfController extends Controller
 
 ---
 
-## 8️ Add Route
+## 8️. Add Route
 
 In `routes/web.php`:
 
@@ -233,7 +233,7 @@ Route::get('/generate-pdf', [PdfController::class, 'generate']);
 
 ---
 
-## 9️ Create Blade View
+## 9️. Create Blade View
 
 Create folder:
 
@@ -402,7 +402,7 @@ test.blade.php
 
 ```
 
-## 10 Add Logo
+## 10. Add Logo
 
 Place logo in:
 
@@ -422,7 +422,7 @@ Do NOT use :
 
 ```
 
-## 11 Test PDF
+## 11. Test PDF
 
 Run server:
 
