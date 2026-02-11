@@ -186,7 +186,7 @@ php artisan cache:clear
 php artisan make:controller PdfController
 ```
 
-Replace controller with:
+app/Http/Controllers/PdfController.php
 
 ```php
 <?php
@@ -218,7 +218,7 @@ class PdfController extends Controller
 
 ## 8️. Add Route
 
-In `routes/web.php`:
+routes/web.php
 
 ```php
 use Illuminate\Support\Facades\Route;
