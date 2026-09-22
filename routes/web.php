@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 /*
 |--------------------------------------------------------------------------
-| PDF Report Dashboard
+| PDF Dashboard
 |--------------------------------------------------------------------------
 */
 
@@ -20,7 +20,7 @@ Route::get('/pdf-reports', [
 
 /*
 |--------------------------------------------------------------------------
-| Generate Dynamic User PDF
+| Generate PDF
 |--------------------------------------------------------------------------
 */
 
@@ -42,7 +42,18 @@ Route::get('/generate-filtered-pdf', [
 
 /*
 |--------------------------------------------------------------------------
-| Download Previous PDF Report
+| Preview Existing PDF
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/pdf-reports/{report}/preview', [
+    PdfController::class,
+    'preview'
+])->name('pdf.preview');
+
+/*
+|--------------------------------------------------------------------------
+| Download Existing PDF
 |--------------------------------------------------------------------------
 */
 
@@ -50,3 +61,25 @@ Route::get('/pdf-reports/{report}/download', [
     PdfController::class,
     'download'
 ])->name('pdf.download');
+
+/*
+|--------------------------------------------------------------------------
+| Delete One PDF Report
+|--------------------------------------------------------------------------
+*/
+
+Route::delete('/pdf-reports/{report}', [
+    PdfController::class,
+    'destroy'
+])->name('pdf.destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Bulk Delete PDF Reports
+|--------------------------------------------------------------------------
+*/
+
+Route::delete('/pdf-reports-bulk-delete', [
+    PdfController::class,
+    'bulkDelete'
+])->name('pdf.bulk-delete');

@@ -5,7 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <title>User PDF Report</title>
+    <title>
+        {{ $reportTitle ?? 'User Report' }}
+    </title>
 
     <style>
 
@@ -121,13 +123,16 @@
 
     </div>
 
-    <h1>User Report</h1>
+    <h1>
+        {{ $reportTitle ?? 'User Report' }}
+    </h1>
 
     <p>
         Laravel 12 Snappy PDF Report
     </p>
 
 </div>
+
 
 <div class="report-info">
 
@@ -157,6 +162,7 @@
 
 </div>
 
+
 @if(!empty($filters))
 
     <div class="filter-box">
@@ -166,11 +172,13 @@
         @foreach($filters as $key => $value)
 
             <p>
+
                 <strong>
                     {{ ucfirst(str_replace('_', ' ', $key)) }}:
                 </strong>
 
                 {{ $value }}
+
             </p>
 
         @endforeach
@@ -179,7 +187,9 @@
 
 @endif
 
+
 <h2>User Details</h2>
+
 
 <table class="users">
 
@@ -198,6 +208,7 @@
         </tr>
 
     </thead>
+
 
     <tbody>
 
@@ -227,8 +238,12 @@
 
             <tr>
 
-                <td colspan="4" style="text-align:center;">
+                <td
+                    colspan="4"
+                    style="text-align:center;">
+
                     No users found.
+
                 </td>
 
             </tr>
@@ -239,6 +254,7 @@
 
 </table>
 
+
 <div class="summary">
 
     <strong>
@@ -247,6 +263,7 @@
     </strong>
 
 </div>
+
 
 <div class="footer">
 
@@ -259,7 +276,8 @@
     </p>
 
     <p>
-        © {{ date('Y') }} Your Company Name. All Rights Reserved.
+        © {{ date('Y') }} Your Company Name.
+        All Rights Reserved.
     </p>
 
 </div>
