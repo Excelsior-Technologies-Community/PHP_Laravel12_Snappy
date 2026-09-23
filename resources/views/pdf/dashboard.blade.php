@@ -675,6 +675,58 @@
 
                 </div>
 
+
+                <!-- WATERMARK -->
+
+                <div class="form-group">
+
+                    <label>
+                        Live Watermark
+                    </label>
+
+                    <select name="watermark">
+
+                        <option value="" @selected(!request('watermark'))>
+                            None
+                        </option>
+
+                        <option value="CONFIDENTIAL" @selected(request('watermark') === 'CONFIDENTIAL')>
+                            🔴 CONFIDENTIAL
+                        </option>
+
+                        <option value="DRAFT" @selected(request('watermark') === 'DRAFT')>
+                            🟠 DRAFT
+                        </option>
+
+                        <option value="PAID" @selected(request('watermark') === 'PAID')>
+                            🟢 PAID
+                        </option>
+
+                        <option value="OFFICIAL" @selected(request('watermark') === 'OFFICIAL')>
+                            🔵 OFFICIAL
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ENCRYPTION PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+                        PDF Password Security
+                    </label>
+
+                    <input
+                        type="password"
+                        name="pdf_password"
+                        value="{{ request('pdf_password') }}"
+                        placeholder="Optional Lock Password">
+
+                </div>
+
             </div>
 
 
@@ -702,7 +754,7 @@
         </form>
 
 
-        <!-- PDF BUTTONS -->
+        <!-- PDF & IMAGE & BATCH ZIP BUTTONS -->
 
         <div class="action-row">
 
@@ -711,6 +763,8 @@
                     'orientation' => request('orientation', 'portrait'),
                     'paper' => request('paper', 'a4'),
                     'report_title' => request('report_title', 'User Report'),
+                    'watermark' => request('watermark'),
+                    'pdf_password' => request('pdf_password'),
                 ])) }}"
                 target="_blank"
                 class="btn btn-success">
@@ -725,6 +779,8 @@
                     'orientation' => request('orientation', 'portrait'),
                     'paper' => request('paper', 'a4'),
                     'report_title' => request('report_title', 'User Report'),
+                    'watermark' => request('watermark'),
+                    'pdf_password' => request('pdf_password'),
                 ])) }}"
                 target="_blank"
                 class="btn btn-dark">
@@ -732,6 +788,36 @@
                 📄 Generate PDF
 
             </a>
+
+
+            <a
+                href="{{ route('pdf.image', array_merge(request()->query(), [
+                    'format' => 'png',
+                    'quality' => 100,
+                    'width' => 1024,
+                    'report_title' => request('report_title', 'User Image Card'),
+                ])) }}"
+                target="_blank"
+                class="btn btn-warning">
+
+                📸 Generate High-Res Image (PNG)
+
+            </a>
+
+
+            <form action="{{ route('pdf.batch-zip') }}" method="POST" style="display:inline;">
+
+                @csrf
+
+                <input type="hidden" name="search" value="{{ request('search') }}">
+
+                <button type="submit" class="btn" style="background: #6f42c1; color: white;">
+
+                    ⚡ Batch Export Individual PDFs (.ZIP)
+
+                </button>
+
+            </form>
 
         </div>
 
