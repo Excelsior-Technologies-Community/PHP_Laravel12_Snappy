@@ -83,3 +83,25 @@ Route::delete('/pdf-reports-bulk-delete', [
     PdfController::class,
     'bulkDelete'
 ])->name('pdf.bulk-delete');
+
+/*
+|--------------------------------------------------------------------------
+| Generate High-Res Image (Snappy Image Studio)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/generate-image', [
+    PdfController::class,
+    'generateImage'
+])->name('pdf.image');
+
+/*
+|--------------------------------------------------------------------------
+| Async Batch PDF Zip Exporter
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/pdf-reports-batch-zip', [
+    PdfController::class,
+    'batchExportZip'
+])->name('pdf.batch-zip');
