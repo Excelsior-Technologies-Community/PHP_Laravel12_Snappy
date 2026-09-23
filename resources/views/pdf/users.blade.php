@@ -95,12 +95,18 @@
             font-size: 14px;
         }
 
-        .footer {
-            margin-top: 35px;
-            padding-top: 10px;
-            border-top: 1px solid #555;
+        .watermark {
+            position: fixed;
+            top: 40%;
+            left: 10%;
+            width: 80%;
             text-align: center;
-            font-size: 10px;
+            opacity: 0.12;
+            font-size: 65px;
+            font-weight: bold;
+            color: #dc3545;
+            transform: rotate(-35deg);
+            z-index: -1000;
         }
 
     </style>
@@ -108,6 +114,12 @@
 </head>
 
 <body>
+
+@if(!empty($watermark))
+    <div class="watermark">
+        {{ strtoupper($watermark) }}
+    </div>
+@endif
 
 <div class="header">
 
